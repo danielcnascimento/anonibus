@@ -1,34 +1,42 @@
 import React, { useState, useEffect } from 'react';
-
 //expo install expo-image-picker
 import * as ImagePicker from 'expo-image-picker';
-
+import styles from './styles'
 import {
-  Text, Button, Image
+  Text, Button, Image, TouchableOpacity
 } from 'react-native';
-
 import firebase from '../config/firebase';
 
-import { WrapperView, CorrecaoView, Header, Content, Footer, Avatar } from './styles';
-
-
-export default function Upload() {
+export default function Upload(props) {
 
   const [imagem, setImagem] = useState(null);
+
+  useEffect(()=>{
+    if(imagem){
+      var user = firebase.auth().currentUser;
+      user.updateProfile({
+        photoURL:imagem 
+      }).then(()=>{
+        //console.log(user.photoURL)
+      }).catch((error)=>{console.log(error)})
+    }
+
+
+
+},[imagem])
 
   uploadImagem = async (uri) => {
     const response = await fetch(uri);
     const blob = await response.blob();
     const filename = new Date().getTime();
 
-    var ref = firebase.storage().ref().child('upload/' + filename);
+    var ref = firebase.storage().ref().child('profilePic/' + filename);
 
     ref.put(blob).then(function (snapshot) {
 
       snapshot.ref.getDownloadURL().then(function (downloadURL) {
         setImagem(downloadURL)
       })
-
     })
   }
 
@@ -53,26 +61,17 @@ export default function Upload() {
   };
 
 
+
   return (
-    <CorrecaoView>
-      <WrapperView>
-        <Header>
-          <Text>Sou texto Um</Text>
-        </Header>
-        <Content>
 
-          {imagem &&
-            <Avatar source={{ uri: imagem }} style={{ width: 200, height: 200 }} />
-          }
+          // {imagem &&
+          //   <Avatar source={{ uri: imagem }} style={{ width: 200, height: 200 }} />
+          // }
 
+          <TouchableOpacity style={styles.itemMenu} onPress={() => { escolherImagem() } }>
+                  <Text style={styles.textMenu}>Change picture</Text>
+          </TouchableOpacity>
 
-          <Button title="Escolher Imagem" onPress={() => { escolherImagem() }} />
-        </Content>
-        <Footer>
-          <Text>Sou texto Tres</Text>
-        </Footer>
-      </WrapperView>
-    </CorrecaoView>
   )
 
 }

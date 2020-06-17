@@ -33,27 +33,42 @@ export default StyleSheet.create({
     btnSubmit: {
         backgroundColor: '#fff',
         width: '90%',
-        height: 45,
+        height: 55,
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 7
+        borderRadius: 7,
+        marginBottom: 15,
     },
     submitText: {
-        fontSize: 18
+        fontSize: 22,
+        fontWeight: 'bold'
     },
-    btnRegister: {
-        marginTop: 15
-    },
-    registerText: {
-        color: '#fff',
-        fontSize: 16
-    },
-    termos: {
-        marginTop: 70,
+
+    btnContainer: {
+        flexDirection: 'row',
+        width: '90%',
+        justifyContent: 'space-between',
         alignItems: 'center',
+    },
+    btnIcon: {
+        width: 35,
+        height: 35,
+    },
+    btnIconMenu: {
+        width: 35,
+        height: 35,
 
     },
-    termosText: {
-        color: '#999'
+    arrowRight: {
+        width: 25,
+        height: 25,
+    },
+    containerMenu: {
+        flex: 1,
+        width: '80%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'flex-end',
+        marginBottom: 15,
     }
 })

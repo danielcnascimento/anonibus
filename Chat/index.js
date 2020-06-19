@@ -14,6 +14,7 @@ import styles from './styles';
 import logoIconWhite from '../assets/img/logoIconWhite.png'
 import btnArrowLeft from '../assets/img/btnArrowLeft.png'
 import Room from '../Room';
+import { set } from 'react-native-reanimated';
 
 export default function Chat(props) {
 
@@ -53,25 +54,6 @@ export default function Chat(props) {
         setSavePicture(null)
   }
 
-  // useEffect (()=>{
-  //   if(userProfile){
-  //     if(userProfile.displayName != null)
-  //       {
-  //         console.log(userProfile.displayName)
-  //         setUser({
-  //           ...user, name: userProfile.displayName
-  //         })
-  //       }
-
-  //       if(userProfile.photoURL != null)
-  //       {
-  //         setUser({
-  //           ...user, picture : userProfile.photoURL
-  //         })
-  //       }
-  //   }
-  // },[])
-
   useEffect(() => {
     carregaUsuarioAnonimo()
     let mensagens_enviadas = []
@@ -97,7 +79,6 @@ export default function Chat(props) {
     axios.get('https://randomuser.me/api/')
       .then(function (response) {
         const user = response.data.results[0];
-        // setDistance(response.data.distance)
         setUser({
           name: userProfile.displayName ? userProfile.displayName  :  `${user.name.first} ${user.name.last}`,
           picture: userProfile.photoURL ? userProfile.photoURL :  user.picture.large 
@@ -121,7 +102,11 @@ export default function Chat(props) {
         <Text style={styles.titlePage}>{room_name}</Text>
             <TouchableOpacity onPress={carregaUsuarioAnonimo}>
               <Image 
-                style={{ width: 35, height: 35 }}
+                style={{ width: 50,
+                   height: 50,
+                   borderRadius: 50,
+                   borderWidth:2,
+                   borderColor:"white" }}
                 source={{ uri: user.picture }} />
             </TouchableOpacity>
           </View>
@@ -138,14 +123,15 @@ export default function Chat(props) {
                 <View style={{ flexDirection: 'column', marginTop: 5 }}>
                   <Text style={{ fontSize: 14, color: '#999' }}>{item.user}</Text>
                   {typeof (item.mensagem) == "string" ?
-                    <Text style={{ fontSize: 12, color : '#999'}} >{item.mensagem}</Text>
+                    <View style={ item.mensagem.length > 0 && styles.textBubble}>
+                      <Text style={{ fontSize: 12, color : '#000'}} >{item.mensagem}</Text>
+                    </View>
                     :
-                    <Text> </Text>
+                    <Text></Text>
                   }
                     { item.imagem ? <Image source={{uri:item.imagem}}
                         style={styles.ImageView}/> : null}
                 </View>
-
               </View>
             ))
           }

@@ -2,13 +2,10 @@ import React, { useState, useEffect } from 'react'
 import {View, Image, Text, TextInput,
   TouchableOpacity, KeyboardAvoidingView,
   Animated, Keyboard} from "react-native";
-
 import logoWhite from '../assets/logoWhite.png'
 import styles from './styles'
 import { useNavigation } from '@react-navigation/native'
-
 import { AuthContext } from '../context';
-
 import firebase from 'firebase';
 
 export default CreateAccount = () => {
@@ -117,7 +114,7 @@ export default CreateAccount = () => {
     />
 
     <TextInput 
-    placeholder="But you can call me.." 
+    placeholder="Mas pode me chamar de..." 
     autoCorrect={false} 
     style={styles.input} 
     onChangeText={text => setTextNickname(text)}
@@ -131,32 +128,8 @@ export default CreateAccount = () => {
         <Text style={styles.registerText}>Já tenho login!</Text>
     </TouchableOpacity>
 
-    {/* <TouchableOpacity style={styles.termos} >
-        <Text style={styles.termosText}> Termos de uso </Text>
-    </TouchableOpacity>  */}
 </Animated.View>
 
 </KeyboardAvoidingView>
-
-
-
-  //   <View style={styles.container}>
-  //     <View style={styles.view_fields}>
-
-  //       <TextInput
-  //         style={styles.input_auth}
-  //         onChangeText={text => setTextEmail(text.toLowerCase())}
-  //         value={textEmail} />
-
-  //       <TextInput
-  //         placeholder="Digite sua senha"
-  //         style={styles.input_auth}
-  //         onChangeText={text => setTextPassword(text)}
-  //         value={textPassword} secureTextEntry={true} />
-  //     </View>
-  //     <Button title="Criar Conta" onPress={() => handleSignUp()} />
-  //   </View>
-  // )
-  
   )}
 

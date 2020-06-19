@@ -8,7 +8,7 @@ import {
 import firebase from '../config/firebase';
 
 export default function Upload(props) {
-
+  const {load,newPic} = props;
   const [imagem, setImagem] = useState(null);
 
   useEffect(()=>{
@@ -17,6 +17,8 @@ export default function Upload(props) {
       user.updateProfile({
         photoURL:imagem 
       }).then(()=>{
+        newPic(imagem)
+        load(false)
         //console.log(user.photoURL)
       }).catch((error)=>{console.log(error)})
     }
@@ -25,7 +27,7 @@ export default function Upload(props) {
 
 },[imagem])
 
-  uploadImagem = async (uri) => {
+    const uploadImagem = async (uri) => {
     const response = await fetch(uri);
     const blob = await response.blob();
     const filename = new Date().getTime();
@@ -40,9 +42,10 @@ export default function Upload(props) {
     })
   }
 
-  escolherImagem = async () => {
+    const escolherImagem = async () => {
     try {
-      let result = await ImagePicker.launchImageLibraryAsync({
+        load(true)
+        let result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.All,
         allowsEditing: true,
         aspect: [4, 3],
@@ -63,13 +66,8 @@ export default function Upload(props) {
 
 
   return (
-
-          // {imagem &&
-          //   <Avatar source={{ uri: imagem }} style={{ width: 200, height: 200 }} />
-          // }
-
           <TouchableOpacity style={styles.itemMenu} onPress={() => { escolherImagem() } }>
-                  <Text style={styles.textMenu}>Change picture</Text>
+                  <Text style={styles.textMenu}>Trocar minha foto</Text>
           </TouchableOpacity>
 
   )

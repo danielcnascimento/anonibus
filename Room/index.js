@@ -49,7 +49,7 @@ export default function Room() {
             <View style={styles.container} >
 
                 <TouchableOpacity style={styles.btnSubmit} onPress={()=>{
-                    navigation.navigate('Chat',{group:'sala_1', room_name: 'Group 1'})}}>
+                    navigation.navigate('Chat',{group:'sala_1', room_name: 'Ponto 1'})}}>
                     <View style={styles.btnContainer}>
                         <Image style={styles.btnIcon} source={logoIcon} />
                         <Text style={styles.submitText}>Ponto 1</Text>
@@ -58,7 +58,7 @@ export default function Room() {
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.btnSubmit}  onPress={()=>{
-                    navigation.navigate('Chat',{group:'sala_2', room_name: 'Group 2'})}}>
+                    navigation.navigate('Chat',{group:'sala_2', room_name: 'Ponto 2'})}}>
                     <View style={styles.btnContainer}>
                         <Image style={styles.btnIcon} source={logoIcon} />
                         <Text style={styles.submitText}>Ponto 2</Text>
@@ -67,7 +67,7 @@ export default function Room() {
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.btnSubmit}  onPress={()=>{
-                    navigation.navigate('Chat',{group:'sala_3' , room_name: 'Group 3'})}}>
+                    navigation.navigate('Chat',{group:'sala_3' , room_name: 'Ponto 3'})}}>
                     <View style={styles.btnContainer}>
                         <Image style={styles.btnIcon} source={logoIcon} />
                         <Text style={styles.submitText}>Ponto 3</Text>

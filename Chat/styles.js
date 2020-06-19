@@ -34,8 +34,8 @@ export default StyleSheet.create({
         width: 40,
         height: 40,
         borderRadius: 50,
-        borderWidth: 1,
-        borderColor: '#333',
+        borderWidth: 2,
+        borderColor: '#777',
         marginRight: 10
       },
       scrollView: {
@@ -49,9 +49,20 @@ export default StyleSheet.create({
         paddingLeft: 10,
         paddingTop: 10,
         marginRight: 60,
+        marginVertical: 10
       },
       ImageView:{
-          width: 120,
-          height: 100
+          width: 150,
+          height: 100,
+          borderRadius:5,
+          borderWidth:3,
+          borderColor:"white"
+      },
+      textBubble:{
+          flex:1,
+          marginVertical:5,
+          backgroundColor:"white",
+          padding:10,
+          borderRadius:10
       }
 })

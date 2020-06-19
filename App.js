@@ -35,37 +35,6 @@ const HomeStackScreen = () => (
   </HomeStack.Navigator>
 )
 
-// const ProfileStack = createStackNavigator();
-
-//   const ProfileStackScreen = () => (
-//   <ProfileStack.Navigator>
-//     <ProfileStack.Screen name="Profile" component={Profile} />
-//   </ProfileStack.Navigator>
-// )
-
-// const TabsScreen = () => (
-//   <Tabs.Navigator
-//     screenOptions={({ route }) => ({
-//       tabBarIcon: ({ focused, color, size }) => {
-//         let iconName;
-//         if (route.name === 'Home') {
-//           iconName = focused ? 'facebook-f' : 'facebook-f';
-//         } else if (route.name === 'Profile') {
-//           iconName = focused ? 'android' : 'android';
-//         } else if (route.name === 'Chat') {
-//           iconName = focused ? 'apple' : 'apple';
-//         } else if (route.name === 'Upload') {
-//           iconName = focused ? 'adobe' : 'adobe';
-//         }
-//         return <FontAwesome5 name={iconName} size={size} color={color} />;
-//       },
-//     })} tabBarOptions={{ activeTintColor: 'tomato', inactiveTintColor: 'gray', }}>
-//     <Tabs.Screen name="Home" component={HomeStackScreen} />
-//     <Tabs.Screen name="Profile" component={ProfileStackScreen} />
-//     <Tabs.Screen name="Chat" component={Chat} />
-//   </Tabs.Navigator>
-// )
-
 
 
 export default () => {

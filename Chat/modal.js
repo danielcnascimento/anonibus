@@ -16,19 +16,19 @@ return (
     <View style={styles.container}>
     <Image source={{uri:props.messagePic}}
     style={{height:200, width:300}} />
-      <Text>Example Modal</Text>
+      <Text>Enviar uma foto</Text>
       <View style={{flexDirection:"row"}}>
       <TextInput style={{
             flex:1,
             margin:5,
             backgroundColor:"white" }} 
-            onChangeText={props.onChangeText} label="send a message" mode="outline"/>
+            onChangeText={props.onChangeText} label="Envie uma mensagem.." mode="outline"/>
       <Button
         mode="outlined" 
         onPress={props.save}
         style={styles.btn}
       >
-          send
+          Enviar
       </Button>
       </View>
       </View>

@@ -14,6 +14,17 @@ const Footer = props =>{
     const [savePicGal,setSavePicGal] = useState(null);
     const [visible, setVisible] = useState(false);
 
+    const checkText = () =>{
+        if(props.value.length > 0){
+            props.save()
+        }else{
+            return
+        }
+        
+    }
+
+    console.log(props.value.length)
+
     const pickImage = async () => {
         try {
           let result = await ImagePicker.launchImageLibraryAsync({
@@ -52,7 +63,7 @@ const Footer = props =>{
         }
     },[savePicGal,onDestroy])
 
-    console.log(visible)
+    //console.log(visible)
 
 
     return(
@@ -75,14 +86,14 @@ const Footer = props =>{
             value={props.value}
             style={styles.inputM} 
             onChangeText={props.onChangeText} 
-            placeholder="insert a normal message"/>
+            placeholder="Insira uma mensagem"/>
 
             <TouchableOpacity onPress={pickImage}>
                 <Image source={btnAddPhoto} />
             </TouchableOpacity>
 
         </View>
-        <TouchableOpacity onPress={props.save}>
+        <TouchableOpacity onPress={checkText}>
             <Image style={{ width: 40, height: 40 }} source={btnSend} />
         </TouchableOpacity>
     </View>

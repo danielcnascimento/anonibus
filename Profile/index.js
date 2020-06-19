@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { View, Text, TouchableOpacity, KeyboardAvoidingView, Image } from 'react-native'
+import { View, Text, TouchableOpacity, KeyboardAvoidingView, Image, ActivityIndicator } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import styles from './styles'
 import btnArrowLeft from '../assets/img/btnArrowLeft.png'
@@ -19,28 +19,9 @@ export default Profile = () => {
   const { signOut } = React.useContext(AuthContext)
   const  userMainID  = React.useContext(UserID)
   const [imagem, setImagem] = useState('');
+  const [loadPic, setLoadPic] = useState(false);
   const [visible, setVisible] = useState(false);
   const [userNickname, setUserNickname] = useState( user.displayName ? user.displayName : 'Enter a Nickname');
-
- 
-  // const salvar = () => {
-  //   api.post('/sendProfileData', {
-  //     userCustomName: userCustomName,
-  //     customProfilePic: imagem,
-  //     userID: userMainID,
-  //   })
-  //     .then(function () {
-  //       // setMensagens([...mensagens, caixaTexto])
-  //       setCaixaTexto('')
-  //       scrollview.scrollToEnd({ animated: true })
-        
-  //     }).catch(function () {
-
-  //     })
-  //       setCloseModal(false)
-  //       setCaixaTexto("")
-  //       setSavePicture(null)
-  // }
 
   const handleSignOut = () => {
     firebase.auth().signOut().then(function () {
@@ -58,35 +39,28 @@ export default Profile = () => {
   }
 
   useEffect(() => {
-   
     if(user){
+      setLoadPic(true)
       setImagem(user.photoURL)
         user.updateProfile({
           displayName:userNickname 
         }).then(()=>{
+          setLoadPic(false)
           console.log(user)
         }).catch((error)=>{console.log(error)})
     }
-  }, [imagem, userNickname])
+  },[imagem, userNickname])
 
   const onDelete = () =>{
  
     if(user){
 
-          var credential;
-          // Prompt the user to re-provide their sign-in credentials
-          user.reauthenticateWithCredential(credential).then(function() {
-            // User re-authenticated.
-          }).catch(function(error) {
-            // An error happened.
-          });
-
           user.delete().then(function() {
-          alert("Bye ;-; ")
+          alert("Tchau ! Mas eu não quis isso... então volte algum dia !")
           signOut()
         }).catch(function(error) {
  
-          alert("Something went wrong..." + error) 
+          alert("Processo sensível... Faça login novamente e repita este processo em sequência. ") 
         });
     }
 }
@@ -101,20 +75,23 @@ return (
               <Image source={logoIconWhite} style={styles.iconLogo} />
           </View>
           <View style={styles.containerProfile}>
-              <Image style={styles.photoProfile} source={imagem ? {uri:imagem} : iconProfile}/>
+              {loadPic ?
+               <ActivityIndicator size="large"/> :
+               <Image style={styles.photoProfile} source={imagem ? {uri:imagem} : iconProfile}/>}
               <Text style={styles.textname}>{userNickname}</Text>
           </View>
           <Modal 
           visible={visible}
+          hidden={() => setVisible(false)}
           onChangeText={setUserNickname}
           save={() => setVisible(false)}/>
           <View style={styles.containerMenu}>
-              <ChooseProfilePic  />
+              <ChooseProfilePic load={setLoadPic} newPic={setImagem} />
               <TouchableOpacity onPress={() => setVisible(true)} style={styles.itemMenu}>
-                  <Text style={styles.textMenu}>Change nickname</Text>
+                  <Text style={styles.textMenu}>Trocar meu apelido</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={onDelete} style={styles.itemMenu} >
-                  <Text style={styles.textMenuDelete}>Delete account</Text>
+                  <Text style={styles.textMenuDelete}>Deletar Conta</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.itemMenu} onPress={handleSignOut}>
                   <Text style={styles.textMenu}>Logout</Text>

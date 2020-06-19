@@ -10,24 +10,25 @@ const ModalMsg= props =>{
 
 return (
     
-    <Portal>
+  <Portal>
     
-    <Modal visible={props.visible}>
+
+    <Modal onDismiss={props.hidden} visible={props.visible}>
     <View style={styles.container}>
-      <Text>Example Modal</Text>
+      <Text>Apelido</Text>
       <View style={{flexDirection:"row"}}>
       <TextInput style={{
             width:270,
             height:50,
             margin:5,
             backgroundColor:"white" }} 
-            onChangeText={props.onChangeText} label="send a message" mode="outline"/>
+            onChangeText={props.onChangeText} label="Me chame de..." mode="outline"/>
       <Button
         mode="outlined" 
         onPress={props.save}
         style={styles.btn}
       >
-          send
+          Pronto
       </Button>
       </View>
       </View>

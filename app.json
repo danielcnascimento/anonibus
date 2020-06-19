@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "anonibus_navigation",
-    "slug": "anonibus_navigation",
+    "name": "Meu Anonibus",
+    "slug": "meu-anonibus",
     "platforms": [
       "ios",
       "android",
@@ -9,11 +9,11 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/img/logoIconBlack190.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/img/logoIconWhite@3x.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#000000"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -21,6 +21,11 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "android": {
+      "permissions": ["READ_EXTERNAL_STORAGE"],
+       "package": "com.daniel.anonibus",
+      "versionCode": 1
+    },
     "ios": {
       "supportsTablet": true
     },

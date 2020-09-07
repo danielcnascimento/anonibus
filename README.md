@@ -24,5 +24,5 @@ We will add more funny stuffs for you.
 
 Feel free to clone and help us with nice ideas, why not ?
 
-![slide3_anonibus_title](https://trello-attachments.s3.amazonaws.com/5db8df629e82fa748b5ecf01/5f1c4ea246e9df0461740000/f0e3971b5d4c1b0a11ad96a390a75215/Slide3.JPG)
+
 ![slide4_anonibus_title](https://trello-attachments.s3.amazonaws.com/5db8df629e82fa748b5ecf01/5f1c4ea246e9df0461740000/75ca9104550707066146461b3c4974a9/devs.jpg)
